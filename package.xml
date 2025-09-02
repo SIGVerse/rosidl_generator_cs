@@ -3,7 +3,7 @@
 <package format="3">
   <name>rosidl_generator_cs</name>
   <version>0.2.0</version>
-  <description>Generate the ROS interfaces in C#.</description>
+  <description>Generates ROS interfaces in C#.</description>
   <maintainer email="tamas.bates@tum.de">Tamas Bates</maintainer>
   <license>AGPLv3</license>
 
