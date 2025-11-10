@@ -70,8 +70,8 @@ MSG_TYPE_TO_CS = {    'byte' : 'sbyte',
                    'float64' : 'double',
                     'double' : 'double',
                     'string' : 'string',
-                      'time' : 'ROSBridgeLib.msg_helpers.Time',
-                  'duration' : 'ROSBridgeLib.msg_helpers.Duration'}
+                      'time' : 'SIGVerse.RosBridge.msg_helpers.Time',
+                  'duration' : 'SIGVerse.RosBridge.msg_helpers.Duration'}
 
 # These substitutions are purely for convenience when working with data on the
 # Unity side so we we don't have to martial everything all the time. The Unity
@@ -241,11 +241,15 @@ def primitive_value_to_cs(type_, value):
 def default_value_from_type(type_):
     if isinstance(type_, AbstractGenericString):
         return '""'
-    elif isinstance(type_, BasicType) and type_.typename in FLOATING_POINT_TYPES:
-        return '0.0f'
-    elif isinstance(type_, BasicType) and type_.typename == 'boolean':
-        return 'false'
+    if isinstance(type_, BasicType):
+        if type_.typename in ('float', 'float32'):
+            return '0.0f'   # C# float
+        if type_.typename in ('double', 'float64', 'long double'):
+            return '0.0'    # C# double
+        if type_.typename == 'boolean':
+            return 'false'
     return 0
+
 
 
 def escape_string(s):
