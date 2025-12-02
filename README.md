@@ -33,5 +33,5 @@ If you only intend to use these classes in a Unity project, you shouldn't need t
 * The generated messages all inherit from a base ROSMessage class [provided by ROSBridgeLib](https://github.com/noirb/ROSBridgeLib/blob/main/Runtime/ROSMessage.cs).
 
 ## Acknowledgements
-This repository is a fork of the original project available at https://github.com/noirb/rosidl_generator_cs. 
+This repository is a fork of the original project available at https://github.com/noirb/rosidl_generator_cs.  
 We would like to express our sincere appreciation to the original author for granting permission to fork and use this work.
