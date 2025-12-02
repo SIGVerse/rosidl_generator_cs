@@ -1,10 +1,6 @@
 # rosidl_generator_cs
 A ROS2 port of [gencs](https://github.com/noirb/gencs).
 
-## Acknowledgements
-This repository is a fork of the original project available at https://github.com/noirb/rosidl_generator_cs. 
-We would like to express our sincere appreciation to the original author for granting permission to fork and use this work.
-
 ## Setup (with ROS)
 *These steps assume you already have a working ROS2 installation and have already set up a workspace for your project.*
 
@@ -14,6 +10,12 @@ The short version:
 3. `source install/setup.bash`
 4. Now any time you `colcon build` your message-containing projects, you will also generate C# versions of all messages.
 
+Example commands:
+```sh
+colcon build --packages-select rosidl_generator_cs
+source install/setup.bash
+colcon build --cmake-clean-first --packages-skip rosidl_generator_cs
+```
 
 ## Usage (with Unity)
 Once setup, any time you rebuild your messages you should also get C# versions of them (in addition to whatever other languages you're working in). They will be located under `install/<package>/include/<package>/(msg|srv)/`
@@ -29,3 +31,7 @@ If you only intend to use these classes in a Unity project, you shouldn't need t
 * All generated messages are placed inside the `SIGVerse.RosBridge` namespace.
 * By default, the generator will replace some common message types with Unity types (e.g. `geometry_msgs/Point` --> `UnityEngine.Vector3`). This is convenient because they happen to serialize to the same output and the message content can be used directly with Unity objects without any need for conversion. This can be disabled by setting `USE_UNITY_TYPES` to `False` in [\_\_init__.py](./rosidl_generator_cs/__init__.py).
 * The generated messages all inherit from a base ROSMessage class [provided by ROSBridgeLib](https://github.com/noirb/ROSBridgeLib/blob/main/Runtime/ROSMessage.cs).
+
+## Acknowledgements
+This repository is a fork of the original project available at https://github.com/noirb/rosidl_generator_cs. 
+We would like to express our sincere appreciation to the original author for granting permission to fork and use this work.
